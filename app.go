@@ -34,9 +34,9 @@ func startMongo() ports.Repository {
 		helper.Config.MongoDbUserName,
 		helper.Config.MongoDbPassword,
 		helper.Config.MongoDbName,
-		helper.Config.MongoDbPort,
+		helper.Config.MongoDbConnString,
 	)
-	
+
 	if err != nil {
 		fmt.Println(err)
 		helper.LogEvent("ERROR", "MongoDB database Connection Error: "+err.Error())
