@@ -148,3 +148,11 @@
 {"@timestamp":"2023-01-18T23:05:21+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
 {"@timestamp":"2023-01-18T23:05:21+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
 {"@timestamp":"2023-01-18T23:06:25+01:00","level":"ERROR","app_name":"jamo-backend","message":"binding order error: Key: 'Order.DeliveryInfo.RecipientName' Error:Field validation for 'RecipientName' failed on the 'required' tag\nKey: 'Order.DeliveryInfo.RecipientEmail' Error:Field validation for 'RecipientEmail' failed on the 'email' tag\nKey: 'Order.DeliveryInfo.RecipientPhoneNumber' Error:Field validation for 'RecipientPhoneNumber' failed on the 'required' tag\nKey: 'Order.DeliveryInfo.RecipientAddress' Error:Field validation for 'RecipientAddress' failed on the 'required' tag"}
+{"@timestamp":"2023-01-18T23:22:20+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-18T23:22:20+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-18T23:22:21+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-18T23:22:21+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-18T23:22:24+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-18T23:22:24+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-18T23:22:24+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-18T23:22:24+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
