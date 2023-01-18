@@ -11,36 +11,55 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-
-func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort string) (ports.Repository, error) {
+func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbConnString string) (ports.Repository, error) {
 	helper.LogEvent("INFO", "Establishing mongoDB connection with given credentials...")
 
-	credentials := options.Credential{
-		Username: dbUsername,
-		Password: dbPassword,
-	}
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:" + dbPort).SetAuth(credentials) // Connect to mongodb with credentials
-	// clientOptions := options.Client().ApplyURI("mongodb://localhost:"+dbPort)// Connect to mongodb without credentials
-	helper.LogEvent("INFO", "Connecting to MongoDB...")
-	db, err := mongo.Connect(context.TODO(), clientOptions)
-	if err != nil {
-		helper.LogEvent("ERROR", "connecting to mongodb")
-		return nil, err
-	}
+	var client *mongo.Client
+	var err error
 
-	// Check the connection
-	helper.LogEvent("INFO", "Confirming MongoDB Connection...")
-	err = db.Ping(context.TODO(), nil)
-	if err != nil {
-		//log.Println(err)
-		//log.Fatal(err)
-		helper.LogEvent("ERROR", "pinging mongodb")
-		return nil, err
+	if dbConnString == "" {
+		credentials := options.Credential{
+			Username: dbUsername,
+			Password: dbPassword,
+		}
+
+		clientOptions := options.Client().ApplyURI("mongodb://localhost:27017").SetAuth(credentials) // Connect to mongodb with credentials
+		helper.LogEvent("INFO", "Connecting to MongoDB...")
+		client, err = mongo.Connect(context.TODO(), clientOptions)
+		if err != nil {
+			helper.LogEvent("ERROR", "connecting to mongodb")
+			return nil, err
+		}
+
+		// Check the connection
+		helper.LogEvent("INFO", "Confirming MongoDB Connection...")
+		err = client.Ping(context.TODO(), nil)
+		if err != nil {
+			helper.LogEvent("ERROR", "pinging mongodb")
+			return nil, err
+		}
+
+	} else {
+		clientOptions := options.Client().ApplyURI(dbConnString)
+		helper.LogEvent("INFO", "Connecting to MongoDB...")
+		client, err = mongo.Connect(context.TODO(), clientOptions)
+		if err != nil {
+			helper.LogEvent("ERROR", "connecting to mongodb")
+			return nil, err
+		}
+
+		// Check the connection
+		helper.LogEvent("INFO", "Confirming MongoDB Connection...")
+		err = client.Ping(context.TODO(), nil)
+		if err != nil {
+			helper.LogEvent("ERROR", "pinging mongodb")
+			return nil, err
+		}
 	}
 
 	//helper.LogEvent("Info", "Connected to MongoDB!")
 	helper.LogEvent("INFO", "Establishing Database collections and indexes...")
-	conn := db.Database(dbname)
+	conn := client.Database(dbname)
 
 	productCollection := conn.Collection("products")
 	newsletterCollection := conn.Collection("newsletter")

@@ -14,7 +14,7 @@ type ConfigStruct struct {
 	MongoDbName        string  `mapstructure:"mongo_db_name"`     // database name
 	MongoDbUserName    string  `mapstructure:"mongo_db_username"` // authentication username
 	MongoDbPassword    string  `mapstructure:"mongo_db_password"` // authentication password
-	MongoDbPort        string  `mapstructure:"mongo_db_port"`
+	MongoDbConnString  string  `mapstructure:"mongo_db_conn_string"`
 	MongoDbAuthDb      string  `mapstructure:"mongo_db_auth_db"`
 	ServiceName        string  `mapstructure:"service_name"`
 	LogFile            string  `mapstructure:"log_file"`

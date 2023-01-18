@@ -270,7 +270,7 @@ func (r *DatabaseInfra) GetAdminMsgs(page string) (interface{}, error) {
 	}
 
 	findOptions = findOptions.SetSort(bson.M{"sent_at": 1}).SetProjection(bson.M{
-		"to":  0,
+		"to":   0,
 		"from": 0,
 	})
 
