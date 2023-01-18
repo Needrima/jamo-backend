@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	mongoRepository "jamo/backend/internal/adapter/repository/mongodb"
 	"jamo/backend/internal/adapter/routes"
 	"jamo/backend/internal/core/helper"
@@ -24,7 +25,11 @@ func main() {
 
 	helper.LogEvent("INFO", "server started")
 	//start server
-	_ = router.Run(":" + helper.Config.ServicePort)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = helper.Config.ServicePort
+	}
+	_ = router.Run(":" + port)
 	//api.SetConfiguration
 }
 
