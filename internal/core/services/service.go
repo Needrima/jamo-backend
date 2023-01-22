@@ -36,8 +36,8 @@ func (s *backendService) SubscribeToNewsLetter(body entity.Subscriber) error {
 	return s.Repository.SubscribeToNewsLetter(body)
 }
 
-func (s *backendService) GetProductByRef(ref string) (interface{}, error) {
-	return s.Repository.GetProductByRef(ref)
+func (s *backendService) GetProductById(ref string) (interface{}, error) {
+	return s.Repository.GetProductById(ref)
 }
 
 func (s *backendService) ContactAdmin(body entity.ContactMessage) error {

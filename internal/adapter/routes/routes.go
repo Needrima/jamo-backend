@@ -24,7 +24,7 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 	{
 		router.GET("/product/amount/:amount", handler.GetProduct)
 		router.POST("/product", handler.CreateProduct)
-		router.GET("/product/ref/:ref", handler.GetProductByRef)
+		router.GET("/product/ref/:ref", handler.GetProductById)
 		router.POST("/product/cart-items", handler.GetCartItems)
 		router.POST("/product/order", handler.CreateOrder)
 		router.PUT("/product/order/update-payment/:id", handler.UpdateOrderPayment)

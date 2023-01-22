@@ -94,7 +94,7 @@ func (r *DatabaseInfra) SubscribeToNewsLetter(body entity.Subscriber) error {
 	return nil
 }
 
-func (r *DatabaseInfra) GetProductByRef(ref string) (interface{}, error) {
+func (r *DatabaseInfra) GetProductById(ref string) (interface{}, error) {
 	id, err := primitive.ObjectIDFromHex(ref)
 	if err != nil {
 		helper.LogEvent("ERROR", "invalid product reference:"+err.Error())
