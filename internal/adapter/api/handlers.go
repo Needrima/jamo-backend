@@ -73,10 +73,10 @@ func (hdl *HTTPHandler) SubscribeToNewLetter(c *gin.Context) {
 	c.JSON(200, gin.H{"message": "success!"})
 }
 
-func (hdl *HTTPHandler) GetProductByRef(c *gin.Context) {
+func (hdl *HTTPHandler) GetProductById(c *gin.Context) {
 	ref := c.Param("ref")
 
-	product, err := hdl.Service.GetProductByRef(ref)
+	product, err := hdl.Service.GetProductById(ref)
 	if err != nil {
 		c.AbortWithStatusJSON(404, gin.H{"error": err.Error()})
 		return

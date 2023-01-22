@@ -18,7 +18,7 @@ type Order struct {
 		Quantity int     `json:"quantity" bson:"quantity,omitempty" binding:"required"`
 		Size     string  `json:"size" bson:"size,omitempty" binding:"required"`
 		Subtotal float64 `json:"subtotal" bson:"subtotal,omitempty" binding:"required"`
-	} `json:"cartItems" bson:"cartItems,omitempty" binding:"required"`
+	} `json:"cartItems,omitempty" bson:"cartItems,omitempty" binding:"required"`
 	CartSubtotal  float64 `json:"cartSubtotal" bson:"cartSubtotal,omitempty" binding:"required"`
 	DeliverStatus string  `json:"deliveryStatus" bson:"deliveryStatus,omitempty" binding:"required,eq=DELIVERED|eq=UNDELIVERED"`
 	PaymentStatus string  `json:"paymentStatus" bson:"paymentStatus,omitempty" binding:"required,eq=PAID|eq=UNPAID"`
