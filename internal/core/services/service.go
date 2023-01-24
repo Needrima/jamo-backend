@@ -108,3 +108,7 @@ func (s *backendService) GetAdminMsgs(page string) (interface{}, error) {
 func (s *backendService) GetOrderById(id string) (interface{}, error) {
 	return s.Repository.GetOrderById(id)
 }
+
+func (s *backendService) UpdateDeliveryStatus(id string) error {
+	return s.Repository.UpdateDeliveryStatus(id)
+}

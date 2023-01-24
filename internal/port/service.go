@@ -15,4 +15,5 @@ type Service interface {
 	GetOrders(page string) (interface{}, error)
 	GetDashBoardValues() (interface{}, error)
 	GetAdminMsgs(page string) (interface{}, error)
+	UpdateDeliveryStatus(id string) error
 }
