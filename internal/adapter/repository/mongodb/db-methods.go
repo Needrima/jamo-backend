@@ -307,3 +307,19 @@ func (r *DatabaseInfra) GetOrderById(id string) (interface{}, error) {
 
 	return order, nil
 }
+
+func (r *DatabaseInfra) UpdateDeliveryStatus(id string) error {
+	idHex, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		helper.LogEvent("ERROR", "invalid id:"+err.Error())
+		return errors.New("invalid order id")
+	}
+
+	_, err = r.OrderCollection.UpdateOne(context.TODO(), bson.M{"_id": idHex}, bson.M{"$set": bson.M{"deliveryStatus": "DELIVERED"}})
+	if err != nil {
+		helper.LogEvent("ERROR", "updating delivery status:"+err.Error())
+		return errors.New("something went wrong")
+	}
+
+	return nil
+}

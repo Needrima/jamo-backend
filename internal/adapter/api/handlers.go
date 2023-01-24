@@ -201,3 +201,17 @@ func (hdl *HTTPHandler) GetOrderById(c *gin.Context) {
 
 	c.JSON(200, order)
 }
+
+func (hdl *HTTPHandler) UpdateDeliveryStatus(c *gin.Context) {
+	id := c.Param("id")
+	if err := hdl.Service.UpdateDeliveryStatus(id); err != nil {
+		c.JSON(500, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"message": "updated order delivery status with id: " + id,
+	})
+}
