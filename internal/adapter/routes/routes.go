@@ -20,29 +20,29 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 
 	//router.Use(middleware.SetHeaders)
 
-	router.Group("/product")
+	productsRouter := router.Group("/product")
 	{
-		router.GET("/product/amount/:amount", handler.GetProduct)
-		router.POST("/product", handler.CreateProduct)
-		router.GET("/product/ref/:ref", handler.GetProductById)
-		router.POST("/product/cart-items", handler.GetCartItems)
-		router.POST("/product/order", handler.CreateOrder)
-		router.PUT("/product/order/update-payment/:id", handler.UpdateOrderPayment)
+		productsRouter.GET("/amount/:amount", handler.GetProduct)
+		productsRouter.POST("", handler.CreateProduct)
+		productsRouter.GET("/ref/:ref", handler.GetProductById)
+		productsRouter.POST("/cart-items", handler.GetCartItems)
+		productsRouter.POST("/order", handler.CreateOrder)
+		productsRouter.PUT("/order/update-payment/:id", handler.UpdateOrderPayment)
 	}
 
-	router.Group("/customer")
+	customersRouter := router.Group("/customer")
 	{
-		router.POST("/customer/subscribe", handler.SubscribeToNewLetter)
-		router.POST("/customer/send-contact-mail", handler.ContactAdmin)
+		customersRouter.POST("/subscribe", handler.SubscribeToNewLetter)
+		customersRouter.POST("/send-contact-mail", handler.ContactAdmin)
 	}
 
-	router.Group("/admin")
+	adminRouter := router.Group("/admin")
 	{
-		router.GET("/admin/orders/page/:page", handler.GetOrders)
-		router.GET("/admin/order/get_dashboard_values", handler.GetDashBoardValues)
-		router.GET("/admin/messages/page/:page", handler.GetAdminMsgs)
-		router.GET("/admin/order/:id", handler.GetOrderById)
-		router.PUT("/admin/order/update-delivery/:id", handler.UpdateDeliveryStatus)
+		adminRouter.GET("/orders/page/:page", handler.GetOrders)
+		adminRouter.GET("/order/get_dashboard_values", handler.GetDashBoardValues)
+		adminRouter.GET("/messages/page/:page", handler.GetAdminMsgs)
+		adminRouter.GET("/order/:id", handler.GetOrderById)
+		adminRouter.PUT("/order/update-delivery/:id", handler.UpdateDeliveryStatus)
 	}
 
 	router.NoRoute(func(ctx *gin.Context) {
