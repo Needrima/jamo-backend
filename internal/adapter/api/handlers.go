@@ -4,10 +4,21 @@ import (
 	"errors"
 	"jamo/backend/internal/core/domain/entity"
 	"jamo/backend/internal/core/helper"
+	ports "jamo/backend/internal/port"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
+
+type HTTPHandler struct {
+	Service ports.Service
+}
+
+func NewHTTPHandler(service ports.Service) *HTTPHandler {
+	return &HTTPHandler{
+		Service: service,
+	}
+}
 
 func (hdl *HTTPHandler) GetProduct(c *gin.Context) {
 	amount, err := strconv.Atoi(c.Param("amount"))

@@ -39,7 +39,8 @@ func startMongo() ports.Repository {
 		helper.Config.MongoDbUserName,
 		helper.Config.MongoDbPassword,
 		helper.Config.MongoDbName,
-		helper.Config.MongoDbConnString,
+		// helper.Config.MongoDbConnString,
+		os.Getenv("mongo_db_conn_string"),
 	)
 
 	if err != nil {
