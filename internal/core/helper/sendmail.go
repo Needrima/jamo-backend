@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"jamo/backend/internal/core/domain/entity"
 	"net/smtp"
+	"os"
 )
 
 //go:embed email-templates/*
@@ -17,7 +18,7 @@ func SendMail(tempName string, data entity.ContactMessage) error {
 
 	smtpHost := Config.SMTPHost
 	smtpPort := Config.SMTPPort
-	password := Config.SMTPPassword
+	password := os.Getenv("smtp_password")
 	from := Config.SMTPUsername
 
 	headers := map[string]string{
