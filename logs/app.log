@@ -294,3 +294,12 @@
 {"@timestamp":"2023-02-19T08:30:00+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
 {"@timestamp":"2023-02-19T08:30:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
 {"@timestamp":"2023-02-19T08:30:00+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-02-19T08:42:50+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-02-19T08:42:50+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-02-19T08:42:51+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-02-19T08:42:51+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-02-19T08:42:57+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-02-19T08:42:57+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-02-19T08:42:57+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-02-19T08:42:57+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-02-19T08:48:04+01:00","level":"ERROR","app_name":"jamo-backend","message":"421 Service not available"}
